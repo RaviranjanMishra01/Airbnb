@@ -9,6 +9,7 @@ const storeRouter = require("./routes/storeRouter")
 const hostRouter = require("./routes/hostRouter")
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
+const authRouter = require("./routes/authRouter")
 // const { mongoConnect } = require("./utils/databaseUtil");
 const {default : mongoose} = require("mongoose")
 const app = express();
@@ -18,6 +19,7 @@ app.set('views', 'views');
 
 app.use(express.urlencoded());
 app.use(storeRouter);
+app.use(authRouter);
 app.use("/host", hostRouter);
 
 app.use(express.static(path.join(rootDir, 'public')))
